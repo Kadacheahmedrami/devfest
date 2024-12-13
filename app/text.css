@@ -1,0 +1,169 @@
+/* styles.css */
+
+/* Font sizes (multiplied by 1.5) */
+.t-24
+  {
+    font-size: 24px; /* 16px * 1.5 */
+  }
+
+  .t-33 {
+    font-size: 33px; /* 22px * 1.5 */
+  }
+  
+  .t-42 {
+    font-size: 42px; /* 28px * 1.5 */
+  }
+  
+  .t-57 {
+    font-size: 57px; /* 38px * 1.5 */
+  }
+  
+  .t-75 {
+    font-size: 75px; /* 50px * 1.5 */
+  }
+  
+  .t-90 {
+    font-size: 90px; /* 60px * 1.5 */
+  }
+  
+  /* Font weights */
+  .m {
+    font-weight: 500; /* Medium */
+  }
+  
+  .s {
+    font-weight: 600; /* Semibold */
+  }
+  
+  .b {
+    font-weight: 700; /* Bold */
+  }
+  
+  /* Combined font size and weight */
+  .t-24-m {
+    font-size: 24px;
+    font-weight: 500;
+  }
+  
+  .t-24-s {
+    font-size: 24px;
+    font-weight: 600;
+  }
+  
+  .t-24-b {
+    font-size: 24px;
+    font-weight: 700;
+  }
+  
+  .t-33-m {
+    font-size: 33px;
+    font-weight: 500;
+  }
+  
+  .t-33-s {
+    font-size: 33px;
+    font-weight: 600;
+  }
+  
+  .t-33-b {
+    font-size: 33px;
+    font-weight: 700;
+  }
+  
+  .t-42-m {
+    font-size: 42px;
+    font-weight: 500;
+  }
+  
+  .t-42-s {
+    font-size: 42px;
+    font-weight: 600;
+  }
+  
+  .t-42-b {
+    font-size: 42px;
+    font-weight: 700;
+  }
+  
+  .t-57-m {
+    font-size: 57px;
+    font-weight: 500;
+  }
+  
+  .t-57-s {
+    font-size: 57px;
+    font-weight: 600;
+  }
+  
+  .t-57-b {
+    font-size: 57px;
+    font-weight: 700;
+  }
+  
+  .t-75-m {
+    font-size: 75px;
+    font-weight: 500;
+  }
+  
+  .t-75-s {
+    font-size: 75px;
+    font-weight: 600;
+  }
+  
+  .t-75-b {
+    font-size: 75px;
+    font-weight: 700;
+  }
+  
+  .t-90-m {
+    font-size: 90px;
+    font-weight: 500;
+  }
+  
+  .t-90-s {
+    font-size: 90px;
+    font-weight: 600;
+  }
+  
+  .t-90-b {
+    font-size: 90px;
+    font-weight: 700;
+  }
+  
+
+    
+  .t-120-m {
+    font-size: 120px;
+    font-weight: 500;
+  }
+  
+  .t-120-s {
+    font-size: 120px;
+    font-weight: 600;
+  }
+  
+  .t-120-b {
+    font-size: 120px;
+    font-weight: 700;
+  }
+
+  @media (max-width: 768px) {
+    .t-120-b {
+      font-size: 13vw; /* Adjust the font size to fit medium screens */
+    }
+  
+    .t-120-m {
+      font-size: 13vw; /* Adjust the font size to fit medium screens */
+    }
+  }
+  
+  /* Media Query for small screens (e.g., max-width: 480px for mobile phones) */
+  @media (max-width: 480px) {
+    .t-120-b {
+      font-size: 12vw; /* Adjust the font size for small mobile screens */
+    }
+  
+    .t-120-m {
+      font-size: 14vw; /* Adjust the font size for small mobile screens */
+    }
+  }

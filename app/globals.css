@@ -1,10 +1,50 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
+:root {
+
+  font-family: 'Poppins', sans-serif;
+  --blue-1: #e9e8fc; /* Blue */
+  --blue-2: #cbc8f9; /* Blue */
+  --blue-3: #a19df3; /* Blue */
+  --blue-4: #766fee; /* Blue */
+  --blue-5: #4c44e9; /* Blue */
+  --blue-6: #251be4; /* Blue */
+  --blue-7: #1f17c2; /* Blue */
+  --blue-8: #1a13a2; /* Blue */
+  --blue-9: #150f82; /* Blue */
+  --blue-10: #110c67; /* Blue */
+  --light-1: #FDFDFD; /* Very Light */
+  --light-2: #F5F5F6; /* Light */
+  --light-3: #F0F1F2; /* Light */
+  --gray-1: #DADBDD; /* Light Gray */
+  --gray-2: #C2C3C7; /* Gray */
+  --gray-3: #91939A; /* Medium Gray */
+  --gray-4: #60646D; /* Dark Gray */
+  --gray-5: #4C515B; /* Dark Gray */
+  --dark-1: #2F3441; /* Dark */
+  --dark-2: #272D3A; /* Dark */
+  --dark-3: #1E2331; /* Very Dark */
+  --dark-4: #0A101F; /* Very Dark */
+  --white: #FFFFFF; /* White */
+  --light-gray-1: #8E98A8; /* Light Gray */
+  --off-white: #E9EBF8; /* Off-white */
+  --black: #000000; /* Black */
+}
+
+
+
+/* Optional: Add this to your global styles or Tailwind config for custom animation */
+.transition-opacity {
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
 
 
 html ,body{
-    height: 100vh;
+    height: 100svh;
  
    width: 100%;
     background-color: transparent;
@@ -13,7 +53,7 @@ html ,body{
 
 
 html , body , .slider-container{
-    overflow-x: scroll;
+    overflow-x: hidden;
     scrollbar-width: none; /* For Firefox */
   }
   
@@ -25,5 +65,13 @@ html , body , .slider-container{
     margin-right: auto;
  
   }
+  
+
+  @layer base {
+  :root {
+
+    --radius: 0.5rem;
+  }
+}
   
   
