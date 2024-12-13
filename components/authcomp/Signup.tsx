@@ -101,42 +101,54 @@ const Signup = () => {
     return valid;
   };
 
-  // Handler to move to the next step
   const handleNextStep = async () => {
     if (validateForm()) {
       if (step === 4) {
-        // Sending GET request with form data on the last step
+        // Concatenate first name and last name to create the username
+        const username = `${formData.firstName} ${formData.lastName}`;
+  
+        // Prepare data for the API request
         const requestData = {
+          username: username, // Use the concatenated first and last name as username
           email: formData.email,
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          storeName: formData.storeName,
-          employees: formData.employees,
-          niche: formData.niche,
+          password: formData.password,
+          storename: formData.storeName, // Assuming store name is passed as 'storename'
         };
-        console.log(requestData)
+  
         try {
-          const response = await fetch('YOUR_API_ENDPOINT_HERE', {
-            method: 'GET', 
+          // Send POST request with form data
+          const response = await fetch('https://devfest-t8bx.onrender.com/users/register', {
+            method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
-            // Sending form data as query parameters in GET request
             body: JSON.stringify(requestData),
           });
-
+  
+          // Handle response
           const data = await response.json();
-          console.log('Response:', data);
+  
+          if (response.ok) {
+            console.log('User created successfully:', data);
+            // You can redirect to another page, show a success message, etc.
+            // Example: redirect to a login page
+            // router.push('/login');
+          } else {
+            console.error('Error creating user:', data);
+            // Handle API errors (e.g., show error message)
+          }
         } catch (error) {
           console.error('Error:', error);
+          // Handle network errors
         }
       }
-
+  
       if (step < 4) {
         setStep((prevStep) => prevStep + 1);
       }
     }
   };
+  
 
   return (
     <>
@@ -155,7 +167,7 @@ const Signup = () => {
               value={formData.email}
               onChange={handleInputChange}
               placeholder="Enter your email"
-              className="h-[64px] t-24-m p-[8px_56px_8px_32px] gap-0 rounded-[6px] border-t border-opacity-0"
+              className="h-[64px]  t-24-m py-[20px] bg-[#F4F4F5] border-[#E4E4E7]  px-[18px] gap-0 rounded-[12px] border-2 border-opacity-1"
             />
             {errors.email && <div className="text-red-500 text-sm">{errors.email}</div>}
 
@@ -167,7 +179,7 @@ const Signup = () => {
             </div>
             <Authbutton
               bgColor="white"
-              textColor="#251BE4"
+              textColor="black"
               content="Continue with Google"
               imageSrc="/google.svg"
             />
@@ -183,7 +195,7 @@ const Signup = () => {
               value={formData.firstName}
               onChange={handleInputChange}
               placeholder="Enter your first name"
-              className="h-[64px] t-24-m p-[8px_56px_8px_32px] gap-0 rounded-[6px] border-t border-opacity-0"
+              className="h-[64px]  t-24-m py-[20px] bg-[#F4F4F5] border-[#E4E4E7]  px-[18px] gap-0 rounded-[12px] border-2 border-opacity-1"
             />
             {errors.firstName && <div className="text-red-500 text-sm">{errors.firstName}</div>}
 
@@ -193,7 +205,7 @@ const Signup = () => {
               value={formData.lastName}
               onChange={handleInputChange}
               placeholder="Enter your last name"
-              className="h-[64px] t-24-m p-[8px_56px_8px_32px] gap-0 rounded-[6px] border-t border-opacity-0"
+              className="h-[64px]  t-24-m py-[20px] bg-[#F4F4F5] border-[#E4E4E7]  px-[18px] gap-0 rounded-[12px] border-2 border-opacity-1"
             />
             {errors.lastName && <div className="text-red-500 text-sm">{errors.lastName}</div>}
           </>
@@ -208,7 +220,7 @@ const Signup = () => {
               value={formData.storeName}
               onChange={handleInputChange}
               placeholder="Enter your store name"
-              className="h-[64px] t-24-m p-[8px_56px_8px_32px] gap-0 rounded-[6px] border-t border-opacity-0"
+              className="h-[64px]  t-24-m py-[20px] bg-[#F4F4F5] border-[#E4E4E7]  px-[18px] gap-0 rounded-[12px] border-2 border-opacity-1"
             />
             {errors.storeName && <div className="text-red-500 text-sm">{errors.storeName}</div>}
 
@@ -218,7 +230,7 @@ const Signup = () => {
               value={formData.employees}
               onChange={handleInputChange}
               placeholder="How many employees?"
-              className="h-[64px] t-24-m p-[8px_56px_8px_32px] gap-0 rounded-[6px] border-t border-opacity-0"
+              className="h-[64px]  t-24-m py-[20px] bg-[#F4F4F5] border-[#E4E4E7]  px-[18px] gap-0 rounded-[12px] border-2 border-opacity-1"
             />
             {errors.employees && <div className="text-red-500 text-sm">{errors.employees}</div>}
 
@@ -228,7 +240,7 @@ const Signup = () => {
               value={formData.niche}
               onChange={handleInputChange}
               placeholder="What is your niche?"
-              className="h-[64px] t-24-m p-[8px_56px_8px_32px] gap-0 rounded-[6px] border-t border-opacity-0"
+              className="h-[64px]  t-24-m py-[20px] bg-[#F4F4F5] border-[#E4E4E7]  px-[18px] gap-0 rounded-[12px] border-2 border-opacity-1"
             />
             {errors.niche && <div className="text-red-500 text-sm">{errors.niche}</div>}
           </>
@@ -243,7 +255,7 @@ const Signup = () => {
               value={formData.password}
               onChange={handleInputChange}
               placeholder="Enter your password"
-              className="h-[64px] t-24-m p-[8px_56px_8px_32px] gap-0 rounded-[6px] border-t border-opacity-0"
+              className="h-[64px]  t-24-m py-[20px] bg-[#F4F4F5] border-[#E4E4E7]  px-[18px] gap-0 rounded-[12px] border-2 border-opacity-1"
             />
             {errors.password && <div className="text-red-500 text-sm">{errors.password}</div>}
 
@@ -253,7 +265,7 @@ const Signup = () => {
               value={formData.confirmPassword}
               onChange={handleInputChange}
               placeholder="Confirm your password"
-              className="h-[64px] t-24-m p-[8px_56px_8px_32px] gap-0 rounded-[6px] border-t border-opacity-0"
+              className="h-[64px]  t-24-m py-[20px] bg-[#F4F4F5] border-[#E4E4E7]  px-[18px] gap-0 rounded-[12px] border-2 border-opacity-1"
             />
             {errors.confirmPassword && <div className="text-red-500 text-sm">{errors.confirmPassword}</div>}
           </>
