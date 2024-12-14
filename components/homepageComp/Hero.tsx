@@ -53,7 +53,7 @@ const Hero = () => {
           className={`absolute  t-120-b text-blue-5  ${visibleIndex === 2 ? 'animate-show' : 'animate-hide'}`}
          
         >
-          Money 
+          Money :)
         </div>
               </div>
        
