@@ -26,7 +26,7 @@ const Hero = () => {
     <div className='ml-[80%]  '>     <Short  src="./message.svg" alt="./"/></div>
   
    
-    </div>
+    </div>  
       <div className='p-[20px] t-120-m w-full text-Start md:text-center  flex flex-col mt-[5.8%] relative'>
         <div className=''>
             
@@ -53,7 +53,7 @@ const Hero = () => {
           className={`absolute  t-120-b text-blue-5  ${visibleIndex === 2 ? 'animate-show' : 'animate-hide'}`}
          
         >
-          Money :)
+          Money 
         </div>
               </div>
        
