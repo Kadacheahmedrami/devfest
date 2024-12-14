@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useState } from "react";
+import { usePathname } from 'next/navigation'; 
 import "./text.css";
 import "./globals.css";
 import Header from '../components/Header';
@@ -15,8 +16,11 @@ const getCookie = (name: string) => {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const pathname = usePathname(); // njibour current route ta3na
 
- 
+
+  const noHeaderRoutes = ['/pages/dash' ,'/pages/welcome'];  //
+
   useEffect(() => {
     const checkToken = async () => {
       token = getCookie("accessToken");
@@ -79,7 +83,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body>
-      <Header isAuthenticated={isAuthenticated} token={token} />
+        {/* dont show the header in specific routes with this condition :) */}
+      {!noHeaderRoutes.includes(pathname) &&    <Header isAuthenticated={isAuthenticated} token={token} />}
+   
         {children}
       </body>
     </html>

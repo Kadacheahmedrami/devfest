@@ -29,7 +29,7 @@ const Header = ({ isAuthenticated, token }) => {
   return (
     <div className="h-[88px] px-[7%] flex justify-center items-center w-full bg-white">
       {/* Logo - Preloaded image for faster load */}
-      <div className="gap-2 mr-auto flex justify-center items-center text-[30px] font-bold">
+      <div className="gap-2 mr-auto  flex justify-center items-center text-[40px] font-bold">
         <Image
           src="/svg/logo.svg"
           alt="logo"
@@ -37,13 +37,7 @@ const Header = ({ isAuthenticated, token }) => {
           height={60}
           priority // Ensures it loads faster (above-the-fold)
         />
-        <Image
-          src="/png/tabib.png"
-          alt="logo"
-          width={160}
-          height={160}
-          priority // Ensures it loads faster (above-the-fold)
-        />
+        Bostify
       </div>
 
       {/* Desktop Navigation */}

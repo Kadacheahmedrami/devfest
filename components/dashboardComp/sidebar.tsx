@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Orders from "./orderlist";
 import ProductsList from "./productslist"
 import CustomersList from "./costumerslist"
+import Image from "next/image";
 import BarChart from "../graph"
 const Sidebar = () => {
   const [selectedTab, setSelectedTab] = useState("Dashboard");
@@ -13,7 +14,7 @@ const Sidebar = () => {
     switch (selectedTab) {
       case "Dashboard":
         return <div className="flex flex-col ">
-            <div className="flex-row flex justify-center items-center gap-10 w-full p-[30px]">
+            <div className="flex-row flex justify-center items-center gap-10 w-[95%] mx-auto p-[30px]">
         <div className="w-[30%] h-[270px] bg-white flex justify-center items-center p-4 rounded-[40px]"><BarChart data={[10,20,30,10,50]} /></div>
         <div className="w-[30%] h-[270px] bg-white flex justify-center items-center p-4 rounded-[40px]"><BarChart data={[30,20,30,60,50]} /></div>
         <div className="w-[30%] h-[270px] bg-white flex justify-center items-center p-4 rounded-[40px]"><BarChart data={[10,5,20,10,100]} /></div>
@@ -21,7 +22,7 @@ const Sidebar = () => {
         
       </div>
       
-      <div className="flex-row flex justify-center items-center gap-10 w-full p-[30px]">
+      <div className="flex-row flex justify-center items-center gap-10  w-[95%] mx-auto p-[30px]">
         <div className="w-[30%] t-33 h-[120px] bg-white flex justify-center items-center p-4 rounded-[20px]">+ 120 clients</div>
         <div className="w-[30%] t-33 h-[120px] bg-white flex justify-center items-center p-4 rounded-[20px]">+ 300 oreders</div>
         <div className="w-[30%] t-33 h-[120px] bg-white flex justify-center items-center p-4 rounded-[20px]">+ 720 costumers</div>
@@ -36,7 +37,7 @@ const Sidebar = () => {
         return (
           <div className="h-full flex flex-col w-full bg-[#F5F5F6]">
             
-            <div className="flex mt-[30px]  flex-col justify-center bg-white items-center  w-[95%] mx-auto rounded-[20px]  p-[30px]">
+            <div className="flex mt-[30px]  flex-col justify-center bg-white items-center border   w-[95%] mx-auto rounded-[20px]  p-[30px]">
               <div className="w-full flex justify-start items-center gap-6 h-[50px] bg-[#F3F4F5] text-black rounded-[10px] shadow-md p-4 font-bold">
                 <div className="w-[15%]">ID</div>
                 <div className="w-[15%]">DATE</div>
@@ -57,7 +58,7 @@ const Sidebar = () => {
 
       case "Products":
         return (
-            <div className="flex mt-[30px]  flex-col justify-center bg-white items-center  w-[95%] mx-auto rounded-[20px]  p-[30px]">
+            <div className="flex mt-[30px]  border  flex-col justify-center bg-white items-center  w-[95%] mx-auto rounded-[20px]  p-[30px]">
              <div className="w-full flex justify-start items-center gap-6 h-[50px] bg-[#F3F4F5] text-black rounded-[10px] shadow-md p-4 font-bold">
         <div className="w-[10%]">ID</div>
         <div className="w-[20%]">Name</div>
@@ -74,15 +75,17 @@ const Sidebar = () => {
 
       case "Customers":
         return (
-         <div className="flex mt-[30px] flex-col justify-center bg-white items-center  w-[95%] mx-auto rounded-[20px]  p-[30px]">
+         <div className="flex border  mt-[30px] flex-col justify-center bg-white items-center  w-[95%] mx-auto rounded-[20px]  p-[30px]">
                 <div className="w-full flex justify-start items-center gap-6 h-[50px] bg-[#F3F4F5] text-black rounded-[10px] shadow-md p-4 font-bold">
-        <div className="w-[10%]">ID</div>
-        <div className="w-[20%]">Date</div>
+        <div className="w-[20%]">ID</div>
         <div className="w-[20%]">Customer</div>
-        <div className="w-[15%]">Phone Number</div>
-        <div className="w-[15%]">Location</div>
-        <div className="w-[10%]">Track Code</div>
-        <div className="w-[10%]">Status</div>
+         <div className="w-[20%]">Phone Number</div>
+         <div className="w-[20%]">Location</div>
+        <div className="w-[20%]">Date</div>
+      
+       
+     
+      
       </div>
             <CustomersList></CustomersList>
           </div>
@@ -104,8 +107,18 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="w-full h-[89.5%] flex flex-row">
-      <div className="w-[400px] flex justify-start gap-4 items-center h-full bg-slate-50 flex-col sidebar">
+    <div className="w-full h-full  flex flex-row">
+      <div className="w-[400px] flex justify-start gap-4 items-center h-full border px-[20px] py-[20px] bg-slate-50 flex-col sidebar">
+      <div className="gap-2 mr-auto  flex justify-center items-center text-[40px] font-bold">
+        <Image
+          src="/svg/logo.svg"
+          alt="logo"
+          width={60}
+          height={60}
+          priority // Ensures it loads faster (above-the-fold)
+        />
+        Bostify
+      </div>
         {["Dashboard", "Orders", "Products", "Customers"].map((tab) => (
           <div
             key={tab}

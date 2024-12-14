@@ -4,13 +4,12 @@ import React, { useEffect, useState } from 'react';
 import Customer from './costumer'; // Ensure the correct path
 
 type CustomerType = {
-  id: string;
-  name: string;
-  email: string;
-  phoneNumber: string;
-  location: string;  // Replaced 'address' with 'location'
-  registeredDate: string;
-  status: string;    // Added 'status' field
+  cid: number; // Matches "cid" in the API response
+  fullname: string; // Matches "fullname" in the API response
+  adress: string; // Matches "adress" in the API response
+  phone: string; // Matches "phone" in the API response
+  createdAt: string; // Matches "createdAt" in the API response
+  id_user: number | null; // Matches "id_user" in the API response
 };
 
 const getCookie = (name: string) => {
@@ -36,7 +35,7 @@ const CustomersList: React.FC = () => {
       }
 
       try {
-        const response = await fetch('https://devfest-t8bx.onrender.com/customers', {
+        const response = await fetch('https://devfest-t8bx.onrender.com/clients', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -81,18 +80,11 @@ const CustomersList: React.FC = () => {
   }
 
   return (
-    <div className="flex flex-col w-full p-4 bg-white">
-      {/* Table Header */}
-      <div className="w-full flex justify-start items-center gap-6 h-[50px] bg-[#F3F4F5] text-black rounded-[10px] shadow-md p-4 font-bold">
-        <div className="w-[15%]">ID</div>
-        <div className="w-[15%]">Name</div>
-        <div className="w-[15%]">Email</div>
-        <div className="w-[15%]">Phone Number</div>
-        <div className="w-[15%]">Location</div>  {/* Changed 'Address' to 'Location' */}
-        <div className="w-[15%]">Status</div>    {/* Added 'Status' */}
-      </div>
+    <div className="flex flex-col w-full bg-white">
+ 
+ 
 
-      {/* Loading or No Data */}
+   
       {loading ? (
         <div className="w-full text-center mt-4">Loading customers...</div>
       ) : customers.length === 0 ? (
@@ -100,13 +92,12 @@ const CustomersList: React.FC = () => {
       ) : (
         customers.map((customer) => (
           <Customer
-            key={customer.id}
-            id={customer.id}
-            name={customer.name}
-            email={customer.email}
-            phoneNumber={customer.phoneNumber}
-            location={customer.location}
-            status={customer.status}
+            key={customer.cid}
+            id={customer.cid.toString()} // Convert number to string
+            name={customer.fullname}
+            location={customer.adress} // Adjust to match the Customer props
+            phoneNumber={customer.phone}
+            registeredDate={new Date(customer.createdAt).toLocaleDateString()} // Format date
           />
         ))
       )}

@@ -1,35 +1,30 @@
-'use client';
 import React from 'react';
 
 type CustomerProps = {
   id: string;
   name: string;
-  email: string;
   phoneNumber: string;
-  location: string;  // Changed 'address' to 'location'
-
-  status: string;    // Added 'status' field
+  location: string; // Renamed from 'address' for consistency
+  registeredDate: string; // Registered date as a formatted string
 };
 
 const Customer: React.FC<CustomerProps> = ({
   id,
   name,
-  email,
   phoneNumber,
-  location,   // Changed 'address' to 'location'
-
-  status,      // Added 'status'
+  location,
+  registeredDate,
 }) => {
   return (
     <>
-      <div className="w-full t-24 justify-center items-center gap-10 flex h-[80px] bg-white flex-row rounded-[10px] shadow-md p-4">
-        <div>{id}</div>
-        <div>{name}</div>
-        <div>{email}</div>
-        <div>{phoneNumber}</div>
-        <div>{location}</div>  {/* Changed 'address' to 'location' */}
-  
-        <div>{status}</div>    {/* Added 'status' */}
+      <div className="w-full flex justify-center items-center gap-10 h-[80px] bg-white flex-row rounded-[10px] shadow-md p-4">
+        <div className='w-[18%]'>{id}</div>
+        
+        <div className='w-[18%]'>{name}</div>
+        <div className='w-[18%]'>{phoneNumber}</div>
+        <div className='w-[18%]'>{location}</div>
+    
+        <div className='w-[18%]'>{registeredDate}</div>
       </div>
       <div className="w-full h-[2px] bg-slate-400"></div>
     </>
