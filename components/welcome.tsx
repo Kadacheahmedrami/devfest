@@ -16,26 +16,26 @@ const Welcome = () => {
         }
       },
       {
-        threshold: 0.5, // Trigger when 50% of the element is in view
+        threshold: 0.5,
       }
     );
 
     const element = document.getElementById('welcome-text');
     if (element) observer.observe(element);
 
-    // Redirect after 4 seconds
+    
     const timer = setTimeout(() => {
-      router.push('/dashboard');
-    }, 4000); // 4 seconds
+      router.push('/pages/dash');
+    }, 1000); 
 
     return () => {
       if (element) observer.unobserve(element);
-      clearTimeout(timer); // Clear the timeout if the component unmounts
+      clearTimeout(timer);
     };
   }, [router]);
 
   return (
-    <div className="t-120-b w-full gap-10 h-full flex flex-row justify-center items-center">
+    <div className="t-120-b w-full gap-10 h-full flex mb-[10%] flex-row justify-center items-center">
       <div
         id="welcome-text"
         className={`transition-all duration-1000 gap-10 ease-out  flex flex-row ${

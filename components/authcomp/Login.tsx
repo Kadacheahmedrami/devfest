@@ -66,7 +66,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex w-full m-auto md:mt-[60px] mt-[20px] md:w-[594px] p-[55px_41px] flex-col items-center gap-5 rounded-[35px] bg-white shadow-[0px_4px_16px_3px_rgba(37,27,228,0.20)]">
+    <div className="flex w-full m-auto  md:w-[594px] p-[55px_41px] flex-col items-center gap-5 rounded-[35px] bg-white shadow-[0px_4px_16px_3px_rgba(37,27,228,0.20)]">
       <div className="t-42-s text-start mr-auto">Log In</div>
       <div className="t-24-m opacity-[0.6]">
         Log In to Unlock Your Potential. Please enter your info below.

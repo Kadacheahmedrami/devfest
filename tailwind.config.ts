@@ -9,9 +9,9 @@ export default {
   ],
   theme: {
   	extend: {
-      boxShadow: {
-        'custom-glow': '0px 4px 16px 3px rgba(37, 27, 228, 0.20)',
-      },
+  		boxShadow: {
+  			'custom-glow': '0px 4px 16px 3px rgba(37, 27, 228, 0.20)'
+  		},
   		colors: {
   			blue: {
   				'1': 'var(--blue-1)',
@@ -46,7 +46,17 @@ export default {
   			white: 'var(--white)',
   			lightgray: 'var(--light-gray-1)',
   			offwhite: 'var(--off-white)',
-  			black: 'var(--black)'
+  			black: 'var(--black)',
+  			sidebar: {
+  				DEFAULT: 'hsl(var(--sidebar-background))',
+  				foreground: 'hsl(var(--sidebar-foreground))',
+  				primary: 'hsl(var(--sidebar-primary))',
+  				'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+  				accent: 'hsl(var(--sidebar-accent))',
+  				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+  				border: 'hsl(var(--sidebar-border))',
+  				ring: 'hsl(var(--sidebar-ring))'
+  			}
   		},
   		borderRadius: {
   			lg: 'var(--radius)',

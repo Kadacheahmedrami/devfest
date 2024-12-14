@@ -2,8 +2,11 @@
 import { useEffect, useState } from "react";
 import "./text.css";
 import "./globals.css";
+import Header from '../components/Header';
+
 import Loader from "../components/Loader"
-// Utility function to get cookies
+let token : any
+// recoverr the token from the cokkie with the js
 const getCookie = (name: string) => {
   const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
   if (match) return match[2];
@@ -13,10 +16,10 @@ const getCookie = (name: string) => {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
 
-  // Runs on initial render and re-renders when the page reloads
+ 
   useEffect(() => {
     const checkToken = async () => {
-      const token = getCookie("accessToken");
+      token = getCookie("accessToken");
 
       if (!token) {
         console.log('No access token found');
@@ -29,7 +32,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`, // Set the token in the Authorization header
+            'Authorization': `Bearer ${token}`, // send the acces token to check its validity
           },
        
         });
@@ -55,27 +58,28 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
  
     const currentPath = window.location.pathname;
 
-  
+  // routes that the user can enter without authentifiying
     const publicPaths = ['/', '/pages/login', '/pages/signup'];
     
- 
+ //
     if (!publicPaths.includes(currentPath) && isAuthenticated === false) {
  
       if (typeof window !== "undefined") {
         window.location.href = "/pages/login"; 
       }
     }
-  }, [isAuthenticated]); // Only run this effect when isAuthenticated changes
+  }, [isAuthenticated]); // change when the variable chang
 
   if (isAuthenticated === null) {
 
     return  <Loader></Loader>;
   }
 
-  // Only render the children if the user is authenticated, or the current route is public
+ // finaly if non of the commands up excute or finish excuting the page load the children of the root layout
   return (
     <html lang="en">
       <body>
+      <Header isAuthenticated={isAuthenticated} token={token} />
         {children}
       </body>
     </html>
