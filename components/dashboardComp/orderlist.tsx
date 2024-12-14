@@ -1,25 +1,25 @@
-'use client';
+"use client";
 
-import React, { useEffect, useState } from 'react';
-import Order from './order'; // Make sure the path is correct
+import React, { useEffect, useState } from "react";
+import Order from "./order"; // Ensure this path is correct
 
 type OrderType = {
   id: string;
   date: string;
-  customer: string;
-  phoneNumber: string;
-  location: string;
-  customerService: string;
-  product: string;
-  category: string;
-  trackCode: string;
   status: string;
+  quantity: number;
+  customerId: number | null;
+  customerName: string | null;
+  customerAddress: string | null;
+  customerPhone: string | null;
+  productId: number | null;
+  productName: string | null;
+  productPrice: string | null;
 };
 
-const getCookie = (name: string) => {
-  const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-  if (match) return match[2];
-  return null;
+const getCookie = (name: string): string | null => {
+  const match = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
+  return match ? match[2] : null;
 };
 
 const OrdersList: React.FC = () => {
@@ -28,43 +28,65 @@ const OrdersList: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    const checkToken = async () => {
+    const fetchOrders = async () => {
       const token = getCookie("accessToken");
 
       if (!token) {
-        console.log('No access token found');
+        console.warn("No access token found");
         setIsAuthenticated(false);
-        setLoading(false); // Stop loading if token is not found
+        setLoading(false);
         return;
       }
 
       try {
-        const response = await fetch('https://devfest-t8bx.onrender.com/orders', {
-          method: 'GET',
+        const response = await fetch("https://devfest-t8bx.onrender.com/orders/details", {
+          method: "GET",
           headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`, // Send the access token to check its validity
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
           },
         });
 
-        if (response.ok) {
-          const data: OrderType[] = await response.json();
-          setOrders(data); // Set orders if data is available
-          setIsAuthenticated(true);
-        } else {
-          console.log('Invalid token');
+        if (!response.ok) {
+          console.warn("Failed to fetch orders. Invalid token or server error.");
           setIsAuthenticated(false);
+          return;
         }
+
+        const data = await response.json();
+        console.log("Fetched orders:", data);
+
+        const mappedOrders = data.map((order: any) => ({
+          id: order.oid.toString(),
+          date: new Date(order.createdAt).toLocaleDateString(),
+          status: order.status || "Pending",
+          quantity: order.quantity,
+          customerId: order.Client?.cid || null,
+          customerName: order.Client?.fullname || null,
+          customerAddress: order.Client?.adress || null,
+          customerPhone: order.Client?.phone || null,
+          productId: order.Product?.pid || null,
+          productName: order.Product?.name || null,
+          productPrice: order.Product?.price || null,
+        }));
+
+        setOrders(mappedOrders);
+        setIsAuthenticated(true);
       } catch (error) {
-        console.error('Error during token verification:', error);
-        setIsAuthenticated(false);
+        console.error("Error fetching orders:", error);
       } finally {
-        setLoading(false); // Stop loading after verification
+        setLoading(false);
       }
     };
 
-    checkToken();
+    fetchOrders();
   }, []);
+
+  if (loading) {
+    return (
+      <div className="w-full text-center mt-4">Loading orders...</div>
+    );
+  }
 
   if (!isAuthenticated) {
     return (
@@ -75,29 +97,24 @@ const OrdersList: React.FC = () => {
   }
 
   return (
-    <div className="flex flex-col w-full  bg-white">
-      {/* Table Header */}
-  
-
-      {/* Loading or No Data */}
-      {loading ? (
-        <div className="w-full text-center mt-4">Loading orders...</div>
-      ) : orders.length === 0 ? (
+    <div className="flex flex-col w-full bg-white">
+      {orders.length === 0 ? (
         <div className="w-full text-center mt-4">No orders found</div>
       ) : (
         orders.map((order) => (
           <Order
             key={order.id}
             id={order.id}
-            date={new Date(order.date).toLocaleDateString()} 
-            customer={order.customer}
-            phoneNumber={order.phoneNumber}
-            location={order.location}
-            customerService={order.customerService}
-            product={order.product}
-            category={order.category || 'N/A'}
-            trackCode={order.trackCode}
+            date={order.date}
             status={order.status}
+            quantity={order.quantity}
+            customerId={order.customerId}
+            customerName={order.customerName}
+            customerAddress={order.customerAddress}
+            customerPhone={order.customerPhone}
+            productId={order.productId}
+            productName={order.productName}
+            productPrice={order.productPrice}
           />
         ))
       )}

@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Product from './product'; // Ensure the correct path to the Product component
 
+
 type ProductType = {
   pid: number;
   name: string;
@@ -74,11 +75,13 @@ const ProductsList: React.FC = () => {
   }
 
   return (
+    <> 
+    
     <div className="flex flex-col w-full  bg-white">
-      {/* Table Header */}
+   
     
 
-      {/* Loading or No Data */}
+      {/* here where i load the data*/}
       {loading ? (
         <div className="w-full text-center mt-4">Loading products...</div>
       ) : products.length === 0 ? (
@@ -99,6 +102,8 @@ const ProductsList: React.FC = () => {
         ))
       )}
     </div>
+    </>
+    
   );
 };
 

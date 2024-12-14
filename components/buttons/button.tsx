@@ -12,7 +12,7 @@ interface ButtonProps {
 const Button: React.FC<ButtonProps> = ({ arrow, wide, bgColor, textColor ,content }) => {
   return (
     <div
-      className={`flex px-[36px] py-[12px] t-24 justify-center items-center gap-2 rounded-[18px] `}
+      className={`flex px-[36px] py-[12px] t-24 cursor-pointer justify-center items-center gap-2 rounded-[18px] transition-all duration-300 transform hover:scale-105`}
       style={{ backgroundColor: bgColor, color: textColor ,content }}
     >
       {content}

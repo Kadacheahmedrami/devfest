@@ -15,6 +15,7 @@ const Header = ({ isAuthenticated, token }) => {
         console.log('Response Status:', response.status);
         console.log('Response Status Text:', response.statusText);
         alert('Failed to logout');
+         alert(token);
       }
     else {
         alert(token);
@@ -31,7 +32,7 @@ const Header = ({ isAuthenticated, token }) => {
       {/* Logo - Preloaded image for faster load */}
       <div className="gap-2 mr-auto  flex justify-center items-center text-[40px] font-bold">
         <Image
-          src="/svg/logo.svg"
+          src="/logo.svg"
           alt="logo"
           width={60}
           height={60}

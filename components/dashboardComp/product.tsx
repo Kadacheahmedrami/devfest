@@ -25,6 +25,7 @@ const Product: React.FC<ProductProps> = ({
 }) => {
   return (
     <>
+   
       <div className="w-full flex justify-center items-center gap-10 flex-row h-[80px] bg-white rounded-[10px] shadow-md p-4">
         <div className='w-[10%]'>{id}</div>
         <div className='w-[20%]'>{name}</div>
