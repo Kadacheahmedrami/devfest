@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation'; // Updated import for the app router
+import { useRouter } from 'next/navigation'; 
 import Image from 'next/image';
 import Authbutton from './authbutton';
 import { Input } from "@/components/ui/input";
@@ -11,7 +11,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
-  const router = useRouter(); // Initialize the router
+  const router = useRouter(); 
 
   const validateForm = () => {
     const newErrors: { email?: string; password?: string } = {};
@@ -51,13 +51,13 @@ const Login = () => {
         const data = await response.json();
         console.log('Login successful:', data.accessToken);
 
-        // Store the access token in localStorage
+        // Store the access token fl cookie ya jadak
         if (data.accessToken) {
         
             document.cookie = `accessToken=${data.accessToken}; path=/; SameSite=Strict`;
         }
         
-        // Redirect using the app router
+        // mar7baa biik
         router.push('/pages/welcome');
       } catch (error) {
         console.error('Login error:', error);

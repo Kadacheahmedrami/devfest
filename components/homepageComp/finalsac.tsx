@@ -1,5 +1,5 @@
 
-import Button from '../components/buttons/button'
+import Button from '../buttons/button'
 
 
 

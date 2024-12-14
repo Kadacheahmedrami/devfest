@@ -1,9 +1,9 @@
 
 import React from 'react';
 
-import Hero from '../components/Hero';
-import Finalsac from '../components/finalsac'
-import Header from '../components/Header';
+import Hero from '../components/homepageComp/Hero';
+import Finalsac from '../components/homepageComp/finalsac'
+import Header from '../components/homepageComp/Header';
 
 
 

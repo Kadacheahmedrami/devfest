@@ -8,7 +8,7 @@ import ProductsList from "./productslist"
 import CustomersList from "./costumerslist"
 
 import Image from "next/image";
-import BarChart from "../graph"
+
 const Sidebar = () => {
   const [selectedTab, setSelectedTab] = useState("Dashboard");
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -75,9 +75,9 @@ const Sidebar = () => {
       case "Dashboard":
         return <div className="flex flex-col ">
             <div className="flex-row flex justify-center items-center gap-10 w-[95%] mx-auto p-[30px]">
-        <div className="w-[30%] h-[270px] bg-white flex justify-center items-center p-4 rounded-[40px]"><BarChart data={[10,20,30,10,50]} /></div>
-        <div className="w-[30%] h-[270px] bg-white flex justify-center items-center p-4 rounded-[40px]"><BarChart data={[30,20,30,60,50]} /></div>
-        <div className="w-[30%] h-[270px] bg-white flex justify-center items-center p-4 rounded-[40px]"><BarChart data={[10,5,20,10,100]} /></div>
+        <div className="w-[30%] bg-white flex justify-center items-center p-4 rounded-[40px]"><Image className="rounded-[40px]" src={"/graph1.png"} width={400} height={240} alt={"alt1"}  /></div>
+        <div className="w-[30%] bg-white flex justify-center items-center p-4 rounded-[40px]"><Image className="rounded-[40px]" src={"/graph2.png"} width={400} height={240}  alt={"alt2"}/></div>
+        <div className="w-[30%] bg-white flex justify-center items-center p-4 rounded-[40px]"><Image className="rounded-[40px]" src={"/graph3.png"} width={400} height={240}   alt={"alt3"}/></div>
         
         
       </div>
@@ -225,7 +225,7 @@ const Sidebar = () => {
 
   return (
     <div className="w-full h-full  flex flex-row">
-      <div className="w-[400px] flex justify-start gap-4 items-center h-full border px-[20px] py-[20px] bg-slate-50 flex-col sidebar">
+      <div className="lg:w-[400px] md:w-[30%]  hidden md:flex justify-start gap-4 items-center h-full border px-[20px] py-[20px] bg-slate-50 flex-col sidebar">
       <div className="gap-2 mr-auto  flex justify-center items-center text-[40px] font-bold">
         <Image
           src="/logo.svg"

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { usePathname } from 'next/navigation'; 
 import "./text.css";
 import "./globals.css";
-import Header from '../components/Header';
+import Header from '../components/homepageComp/Header';
 
 import Loader from "../components/Loader"
 let token : any

@@ -8,7 +8,7 @@ const Header = ({ isAuthenticated, token }) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`, // send the access token to check its validity
+          'Authorization': `Bearer ${token}`, 
         },
       });
       if (!response.ok) {
@@ -29,19 +29,19 @@ const Header = ({ isAuthenticated, token }) => {
 
   return (
     <div className="h-[88px] px-[7%] flex justify-center items-center w-full bg-white">
-      {/* Logo - Preloaded image for faster load */}
+  
       <div className="gap-2 mr-auto  flex justify-center items-center text-[40px] font-bold">
         <Image
           src="/logo.svg"
           alt="logo"
           width={60}
           height={60}
-          priority // Ensures it loads faster (above-the-fold)
+          priority 
         />
-        Bostify
-      </div>
+        Boostify
+      </div >
 
-      {/* Desktop Navigation */}
+   
       <ul className="md:items-center lg:flex hidden mr-auto">
         {["Home", "Services", "About", "Contact"].map((menuItem, index) => (
           <li
@@ -59,9 +59,9 @@ const Header = ({ isAuthenticated, token }) => {
         ))}
       </ul>
 
-      {/* Authentication Buttons */}
+        {/* this one show auth buttons if the user is not Authenticated or logout button if he is  */}
       {isAuthenticated ? (
-        // Logout Button
+    
         <div className="hidden flex-row gap-6 lg:flex lg:items-center">
           <button
             onClick={handleLogout}
@@ -71,7 +71,7 @@ const Header = ({ isAuthenticated, token }) => {
           </button>
         </div>
       ) : (
-        // Sign-in and Join Buttons
+       
         <div className="hidden flex-row gap-6 lg:flex lg:items-center">
           <a href="/pages/signup">
             <button className="relative h-12 w-40 overflow-hidden border border-[#251BE4] text-[#251BE4] shadow-2xl transition-all rounded-[10px] duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-[#251BE4] before:duration-300 before:ease-out hover:text-white hover:shadow-[0_4px_20px_#251BE4] hover:before:h-40 hover:before:w-40 hover:before:opacity-100">

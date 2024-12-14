@@ -1,13 +1,15 @@
 'use client'
 
+//welcome to our website page with simpel anmation 
+
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation'; // Import the router hook
+import { useRouter } from 'next/navigation';
 
 const Welcome = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const router = useRouter(); // Initialize the router
+  const router = useRouter(); 
 
-  // IntersectionObserver to detect when the component comes into the viewport
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
