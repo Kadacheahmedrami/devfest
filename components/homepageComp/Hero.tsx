@@ -60,7 +60,44 @@ const Hero = () => {
         </div>
       
       </div>
-
+      <style jsx>{`
+        .animate-show {
+          animation: fadeInUp 1s ease-in-out forwards;
+        }
+        .animate-hide {
+          animation: fadeOutDown 1s ease-in-out forwards;
+        }
+        @keyframes fadeInUp {
+          0% {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        @keyframes fadeOutDown {
+          0% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+          100% {
+            opacity: 0;
+            transform: translateY(-20px);
+            @keyframes fadeOutDown {
+                0% {
+                  opacity: 1;
+                  transform: translateY(0px);
+                }
+                100% {
+                  opacity: 0;
+                  transform: translateY(-20px);
+                }
+              }
+          }
+        }
+      `}</style>
    
   
     </>
